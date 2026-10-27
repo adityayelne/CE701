@@ -286,7 +286,10 @@ export const App: React.FC = () => {
                   <SymbolTableTab symbols={analysisResult?.symbol_table || []} />
                 )}
                 {activeTab === 'ast' && (
-                  <ASTTab root={analysisResult?.ast} />
+                  <ASTTab 
+                    root={analysisResult?.ast} 
+                    onSelectLine={(line) => setHighlightedLine({ line, ts: Date.now() })}
+                  />
                 )}
                 {activeTab === 'ir' && (
                   <IntermediateCodeTab
